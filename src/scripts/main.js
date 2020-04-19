@@ -55,11 +55,13 @@ const check = () => {
 
       return;
     }
+  }
 
-    if (cells[i].innerHTML === '') {
+  cells.forEach(item => {
+    if (item.innerHTML === '') {
       draw = false;
     }
-  }
+  });
 
   if (draw) {
     alert('Ничья');
