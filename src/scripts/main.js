@@ -18,7 +18,6 @@ area.addEventListener('click', e => {
     return;
   }
 
-  player = player === 'x' ? 'o' : 'x';
   check();
 });
 
@@ -35,14 +34,18 @@ const check = () => {
   ];
 
   const cells = document.querySelectorAll('.cell');
+  const modal = document.querySelector('.modal');
+  const modalText = document.querySelector('.modal__text');
+  const overlay = document.querySelector('.overlay');
   let draw = true;
 
   for (let i = 0; i < win.length; i++) {
     if (cells[win[i][0]].innerHTML === 'x'
       && cells[win[i][1]].innerHTML === 'x'
       && cells[win[i][2]].innerHTML === 'x') {
-      alert('Выиграли: Крестики');
-      location.reload();
+      modalText.textContent = `Выиграли: ${player}`;
+      modal.classList.add('modal--active');
+      overlay.classList.add('overlay--active');
 
       return;
     }
@@ -50,8 +53,9 @@ const check = () => {
     if (cells[win[i][0]].innerHTML === 'o'
       && cells[win[i][1]].innerHTML === 'o'
       && cells[win[i][2]].innerHTML === 'o') {
-      alert('Выиграли: Нолики');
-      location.reload();
+      modalText.textContent = `Выиграли: ${player}`;
+      modal.classList.add('modal--active');
+      overlay.classList.add('overlay--active');
 
       return;
     }
@@ -64,7 +68,16 @@ const check = () => {
   });
 
   if (draw) {
-    alert('Ничья');
-    location.reload();
+    modalText.textContent = 'Ничья';
+    modal.classList.add('modal--active');
+    overlay.classList.add('overlay--active');
   }
+
+  player = player === 'x' ? 'o' : 'x';
 };
+
+const restartGame = document.querySelector('.modal__button');
+
+restartGame.addEventListener('click', () => {
+  location.reload();
+});
