@@ -1,6 +1,6 @@
 # Tic_Tac_Toe_game
 
-[DEMO PAGE](https://borisovecviktor.github.io/tic_tac_toe_game/)
+[GAME](https://borisovecviktor.github.io/tic_tac_toe_game/)
 
 ### Technologies
 - HTML5/CCS3, Sass
